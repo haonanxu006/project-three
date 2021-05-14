@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles/main.css">
+    <script src="./scripts/main.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.2.0/chart.min.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="slideshow"> 
+
+        <div class="slide" id="slide-seven">
+            <h1>Popular Apple Varieties in the US</h1>
+            <p>
+                Data from the 2007 Agricultural Resource Management Survey show that the top five apple varieties-Red Delicious, Golden Delicious, Gala, Fuji, and Granny Smith-were the same in conventional and organic production, although the order differed between the two production systems. These five varieties accounted for over two-thirds of apple production in the surveyed States. Red Delicious, Gala, and Fuji are primarily fresh-market apples, while Golden Delicious and Granny Smith are "dual-purpose" apples that can be used in either fresh or processing markets.
+            </p>
+            <div class="chart-container">
+                <canvas id="chart"></canvas>
+                <script>
+                    let chart = document.getElementById("chart").getContext('2d');
+
+                    let barChart = new Chart(chart, {
+                        type: 'bar',
+                        data: {
+                            labels: ['Red Delicious', 'Golden Delicious', 'Gala', 'Fuji', 'Granny Smith', 'Other varieties'],
+                            datasets: [
+                                {
+                                    label: 'Percent of Harvested Acres',
+                                    data: [22, 14, 12, 10, 9, 34]
+                                }
+                            ]
+                        }
+                    })
+                </script>
+            </div>
+            <button class="accordion">Reference Link</button>
+            <div class="panel">
+                <p>https://www.ers.usda.gov/data-products/chart-gallery/gallery/chart-detail/?chartId=75127</p>
+            </div>
+            <script>
+                var acc = document.getElementsByClassName("accordion");
+                var i;
+
+                for (i = 0; i < acc.length; i++) {
+                    acc[i].addEventListener("click", function() {
+
+                        var panel = this.nextElementSibling;
+                        if (panel.style.maxHeight) {
+                        panel.style.maxHeight = null;
+                        } else {
+                        panel.style.maxHeight = panel.scrollHeight + "px";
+                        } 
+                    });
+                }
+            </script>
+        </div>
+
+        <div class="slide" id="slide-six">
+            <p class="body-text">After a few years of caring, we now have some fruits!</p>
+            <div class="img-container">
+                <img src="./images/ground.png" class="ground" alt="">
+                <a href="#slide-seven" onclick="hide('slide-six', 'slide-seven')" class="mature-tree">
+                    <img src="./images/mature-tree.png" alt="">
+                </a>
+            </div>
+        </div>
+
+        <div class="slide" id="slide-five">
+            <p class="body-text">Most apple varieties have flowers that contain male and female parts and so are self-pollinating. These trees will set fruit without cross-pollination. However, there are some varieties that are self-infertile and require a pollenizer, such as bees.</p>
+            <div class="img-container">
+                <img src="./images/ground.png" class="ground" alt="">
+                <a href="#slide-six" onclick="hide('slide-five', 'slide-six')" class="blooming-tree">
+                    <img src="./images/blooming-tree.png" alt="">
+                </a>
+            </div>
+        </div>
+
+        <div class="slide" id="slide-four">
+            <p class="body-text">An established apple tree requires only infrequent watering but be sure to water all trees during prolonged dry periods.</p>
+            <div class="img-container">
+                <img src="./images/ground.png" class="ground" alt="">
+                <a href="#slide-five" onclick="hide('slide-four', 'slide-five')" class="sapling-two">
+                    <img src="./images/sapling-two.png" alt="">
+                </a>
+            </div>
+        </div>
+
+        <div class="slide" id="slide-three">
+            <p class="body-text">Newly planted apple trees require moderate watering weekly. Set the water on low and allow it to seep into the soil.</p>
+            <div class="img-container">
+                <img src="./images/ground.png" class="ground" alt="">
+                <a href="#slide-four" onclick="hide('slide-three', 'slide-four')" class="sapling-one">
+                    <img src="./images/sapling-one.png" alt="">
+                </a>
+            </div>
+        </div>
+
+        <div class="slide" id="slide-two">
+            <p class="body-text">Before apples seeds germinate, they need to be exposed to cool, moist conditions, which can be achieved by planting them outdoor in fall. Then, plant them 1/2 inch deep.</p>
+            <div class="img-container">
+                <img src="./images/ground.png" class="ground" alt="" />
+                <a href="#slide-three" onclick="hide('slide-two', 'slide-three')" class="seed-hole">
+                    <img src="./images/seed-hole.png" alt="" />
+                </a>
+            </div>
+        </div>
+
+        <div class="slide active" id="slide-one">
+            <div class="apple-container">
+                <h1>How does an apple tree grow from a seed?</h1>       
+                <p>This webpage shows the life cycle of an apple tree from a seed to a mature tree that bears fruits. The animated process is demonstrated by an interactive slideshow, which proceeds by clicking on the tree image at each stage of grwoth. Let's get started by clicking on the apple!</p>         
+                <a href="#slide-two" onclick="hide('slide-one', 'slide-two')" class="apple"><img src="./images/apple.png" class="apple-img" alt="" /></a>
+            </div>
+        </div>
+
+    </div>
+</body>
+
+</html>
